@@ -26,20 +26,29 @@ $(document).ready(function () {
   render();
 });
 
-// Render App
-function generateId() {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
-}
-function addItem(itemName) {
-  var newItem = {
-    name: itemName,
-    completed: false,
-    id: generateId(),
-  };
-  items.push(newItem);
+// Update Item Name Function
+function updateItemName(newName) {
+  items = $.map(items, function (item) {
+    if (item.id === editId) {
+      return $.extend({}, item, { name: newName });
+    }
+    return item;
+  });
+  editId = null;
   render();
   setTimeout(function () {
-    alert("Item Added Successfully!");
+    alert("Item Updated Successfully!");
+  }, 0);
+}
+
+// Set Edit ID Function
+function setEditId(itemId) {
+  editId = itemId;
+  render();
+
+  // Focus input after render
+  setTimeout(function () {
+    $(".form-input").focus();
   }, 0);
 }
 

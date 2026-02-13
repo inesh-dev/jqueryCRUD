@@ -14,15 +14,21 @@ function createSingleItem(item) {
       <i class="fa-regular fa-trash-can"></i>
     </button>
   `);
-    $div.find(".remove-btn").on("click", function () {
+
+  // Checkbox toggle functionality
+  $div.find("input[type='checkbox']").on("change", function () {
+    toggleItemCompleted(item.id);
+  });
+
+  // Remove button functionality
+  $div.find(".remove-btn").on("click", function () {
     removeItem(item.id);
   });
+
+  // Edit button functionality
   $div.find(".edit-btn").on("click", function () {
     setEditId(item.id);
   });
 
- 
-
   return $div;
-  
 }

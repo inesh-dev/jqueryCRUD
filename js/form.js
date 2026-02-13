@@ -1,5 +1,4 @@
 // Create Form Element
-// Create Form Element
 function createForm(editId, itemToEdit) {
   var $form = $("<form></form>");
 
